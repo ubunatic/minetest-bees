@@ -1,11 +1,17 @@
-BEES MOD V2.2
+BEES MOD V2.3
 -------------
 
 FEATURES
 --------
-3.0
+
+2.3
+- protection check when opening artificial/industrial hives
+- protection check when removing items from extractor
+- Intllib support (template added)
+- Wild hives are removed if found floating in mid air
+
+2.2.2
 - Pipeworks compatibility (Industrial beehive)
-- Get honey comb from full frame
 
 2.2.1
 - removed steel dependency temporarily
@@ -42,6 +48,7 @@ CONTRIBUTORS
 - VanessaE (wild bee hive nodebox)
 - Neuromancer (textures for wild bee hive and inspiration for other textures)
 - Novatux (enabled pipeworks compatibility)
+- TenPlus1 (tweaked and tidied code, protection check)
 
 FORUM
 -----
