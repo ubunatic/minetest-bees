@@ -58,3 +58,42 @@ LICENSE
 -------
 - codes is WTFPL
 - textures are CC BY-SA
+
+CRAFTS
+------
+
+Honey Extractor: S = steel ingot, T = stick, M = mese crystal
+
+_ S _
+S T S
+M S M
+
+Empty Frame: W = wood, S = stick
+
+W W W
+S S S
+S S S
+
+Grafting Tool: S = steel ingot, T = stick
+
+_ S
+T _
+
+Artificial Beehive: W = wood, S = stick
+
+W W W
+W S W
+W S W
+
+Smoker: S = steel ingot, T = torch, R = red wool
+
+S R
+_ T
+_ S
+
+Industrial Beehive: S = steel ingot, P = plastic sheeting, H = artificial hive,
+  P = pipeworks tube
+
+S P S
+T H T
+S P S
