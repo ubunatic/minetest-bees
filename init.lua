@@ -1,6 +1,6 @@
 -- Mod:     BEES
 -- Author:  Bas080 (Tweaked by TenPlus1)
--- License: WTFPL
+-- License: CC0
 
 
 -- Intllib support
