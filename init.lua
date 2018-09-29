@@ -12,7 +12,7 @@ else
 end
 
 
---FUNCTIONS
+-- FUNCTIONS
 
 local hive_wild = function(pos, grafting)
 
@@ -58,7 +58,7 @@ local polinate_flower = function(pos, flower)
 end
 
 
---NODES
+-- NODES
 
 minetest.register_node('bees:extractor', {
 	description = S('Honey Extractor'),
@@ -206,8 +206,9 @@ minetest.register_node('bees:extractor', {
 		local meta = minetest.get_meta(pos)
 		local inv = meta:get_inventory()
 
-		if inv:get_stack(listname, 1):get_count() == stack:get_count() then -- inv was empty -> start the timer
-				timer:start(5) --create a honey bottle and empty frame and wax every 5 seconds
+		-- if inventory empty start timer for honey bottle, empty frame and wax
+		if inv:get_stack(listname, 1):get_count() == stack:get_count() then
+			timer:start(5)
 		end
 	end,
 
@@ -637,7 +638,7 @@ minetest.register_node('bees:hive_artificial', {
 	end,
 })
 
---ABMS
+-- ABMS
 
 minetest.register_abm({
 	nodenames = {'bees:hive_artificial', 'bees:hive_wild', 'bees:hive_industrial'},
@@ -681,14 +682,14 @@ minetest.register_abm({
 })
 
 
---spawn abm. This should be changed to a more realistic type of spawning
+-- spawn abm. This should be changed to a more realistic type of spawning
 minetest.register_abm({
 	nodenames = {'group:leaves'},
 	neighbors = {''},
 	interval = 1600,
 	chance = 20,
 
-	action = function(pos, node, _, _)
+	action = function(pos, node)
 
 		local p = {x = pos.x, y = pos.y - 1, z = pos.z}
 
@@ -702,7 +703,7 @@ minetest.register_abm({
 })
 
 
---spawning bees around bee hive
+-- spawning bees around bee hive
 minetest.register_abm({
 	nodenames = {'bees:hive_wild', 'bees:hive_artificial', 'bees:hive_industrial'},
 	neighbors = {'group:flowers', 'group:leaves'},
@@ -724,7 +725,7 @@ minetest.register_abm({
 })
 
 
---remove bees
+-- remove bees
 minetest.register_abm({
 	nodenames = {'bees:bees'},
 	interval = 30,
@@ -736,7 +737,7 @@ minetest.register_abm({
 })
 
 
---ITEMS
+-- ITEMS
 
 minetest.register_craftitem('bees:frame_empty', {
 	description = S('Empty hive frame'),
@@ -777,7 +778,7 @@ minetest.register_craftitem('bees:queen', {
 })
 
 
---CRAFTS
+-- CRAFTS
 
 minetest.register_craft({
 	output = 'bees:extractor',
@@ -835,7 +836,7 @@ if minetest.get_modpath('bushes_classic') then
 end
 
 
---TOOLS
+-- TOOLS
 
 minetest.register_tool('bees:smoker', {
 	description = S('smoker'),
@@ -893,18 +894,19 @@ minetest.register_tool('bees:grafting_tool', {
 })
 
 
---COMPATIBILTY --remove after all has been updated
+-- COMPATIBILTY --remove after all has been updated
 
---ALIASES
+-- ALIASES
 minetest.register_alias('bees:honey_extractor', 'bees:extractor')
 
---BACKWARDS COMPATIBILITY WITH OLDER VERSION
+-- BACKWARDS COMPATIBILITY WITH OLDER VERSION
 minetest.register_alias('bees:honey_bottle', 'bees:bottle_honey')
 
-minetest.register_abm({
+minetest.register_lbm({
 	nodenames = {'bees:hive', 'bees:hive_artificial_inhabited'},
-	interval = 0,
-	chance = 1,
+	name = 'bees:replace_old_hives',
+	label = 'Replace old hives',
+	run_at_every_load = true,
 
 	action = function(pos, node)
 
@@ -931,11 +933,11 @@ minetest.register_abm({
 
 			timer:start(60)
 		end
-	end,
+	end
 })
 
 
---PIPEWORKS
+-- PIPEWORKS
 
 if minetest.get_modpath("pipeworks") then
 
@@ -1184,5 +1186,6 @@ if minetest.get_modpath("pipeworks") then
 		}
 	})
 end
+
 
 print(S('[MOD] Bees Loaded!'))
