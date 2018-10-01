@@ -682,21 +682,28 @@ minetest.register_abm({
 })
 
 
+local floor = math.floor
+
 -- spawn abm. This should be changed to a more realistic type of spawning
 minetest.register_abm({
 	nodenames = {'group:leaves'},
-	neighbors = {''},
-	interval = 1600,
-	chance = 20,
+	neighbors = {'air'},
+	interval = 800,--1600,
+	chance = 10,--20,
 
 	action = function(pos, node)
 
+		if floor(pos.x / 40) ~= pos.x / 40
+		or floor(pos.z / 40) ~= pos.z / 40
+		or floor(pos.y /  5) ~= pos.y / 5 then return end
+
 		local p = {x = pos.x, y = pos.y - 1, z = pos.z}
+		local nod = minetest.get_node_or_nil(p)
+		local def = minetest.registered_nodes[nod.name]
 
-		if minetest.get_node(p).walkable == false then return end
+		if not def or def.walkable then return end
 
-		if (minetest.find_node_near(p, 5, 'group:flora') ~= nil
-		and minetest.find_node_near(p, 40, 'bees:hive_wild') == nil) then
+		if minetest.find_node_near(p, 5, 'group:flora') then
 			minetest.add_node(p, {name = 'bees:hive_wild'})
 		end
 	end,
