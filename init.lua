@@ -705,7 +705,7 @@ minetest.register_abm({
 
 		local p = {x = pos.x, y = pos.y - 1, z = pos.z}
 		local nod = minetest.get_node_or_nil(p)
-		local def = minetest.registered_nodes[nod.name]
+		local def = nod and minetest.registered_nodes[nod.name]
 
 		if not def or def.walkable then return end
 
