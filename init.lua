@@ -132,12 +132,12 @@ minetest.register_node("bees:extractor", {
 			--wax flying all over the place
 			minetest.add_particle({
 				pos = {x = pos.x, y = pos.y, z = pos.z},
-				vel = {
+				velocity = {
 					x = random(-1, 1),
 					y = random(4),
 					z = random(-1, 1)
 				},
-				acc = {x = 0, y = -6, z = 0},
+				acceleration = {x = 0, y = -6, z = 0},
 				expirationtime = 2,
 				size = random(1, 3),
 				collisiondetection = false,
@@ -658,12 +658,12 @@ minetest.register_abm({
 		-- Bee particle
 		minetest.add_particle({
 			pos = {x = pos.x, y = pos.y, z = pos.z},
-			vel = {
+			velocity = {
 				x = (random() - 0.5) * 5,
 				y = (random() - 0.5) * 5,
 				z = (random() - 0.5) * 5
 			},
-			acc = {
+			acceleration = {
 				x = random() - 0.5,
 				y = random() - 0.5,
 				z = random() - 0.5
@@ -877,8 +877,8 @@ minetest.register_tool("bees:smoker", {
 					y = pos.y,
 					z = pos.z + random() - 0.5
 				},
-				vel = {x = 0, y = 0.5 + random(), z = 0},
-				acc = {x = 0, y = 0, z = 0},
+				velocity = {x = 0, y = 0.5 + random(), z = 0},
+				acceleration = {x = 0, y = 0, z = 0},
 				expirationtime = 2 + random(2.5),
 				size = random(3),
 				collisiondetection = false,
